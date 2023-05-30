@@ -6,11 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 12:54:18 by oakerkao          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/05/28 17:12:47 by oakerkao         ###   ########.fr       */
-=======
-/*   Updated: 2023/05/23 16:40:30 by abelayad         ###   ########.fr       */
->>>>>>> upstream/main
+/*   Updated: 2023/05/30 15:56:49 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +19,11 @@ void	close_child_fds(t_context *ctx)
 
 	close_fd = ctx->here_doc;
 	close_pipe = ctx->fd_close;
-<<<<<<< HEAD
-	
-=======
 	while (close_fd)
 	{
 		close(close_fd->content);
 		close_fd = close_fd->next;
 	}
->>>>>>> upstream/main
 	while (close_pipe)
 	{
 		close(close_pipe->content);

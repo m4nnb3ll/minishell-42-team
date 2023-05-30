@@ -6,11 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:41:56 by oakerkao          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/05/29 15:38:51 by oakerkao         ###   ########.fr       */
-=======
-/*   Updated: 2023/05/23 19:38:59 by abelayad         ###   ########.fr       */
->>>>>>> upstream/main
+/*   Updated: 2023/05/30 16:00:41 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +37,8 @@ int	check_exit_arg(char *str)
 	{
 		g_minishell.exit_s = 0;
 		exit_error_msg(str);
-<<<<<<< HEAD
 		g_minishell.exit_s = 255;
 		exit(g_minishell.exit_s);
-=======
-		ft_clear_minishell();
-		exit(255);
->>>>>>> upstream/main
 	}
 	return (ft_atoi(str));
 }
@@ -61,25 +52,15 @@ void	ft_exit(char **args)
 	{
 		if (args[2])
 		{
-<<<<<<< HEAD
 			g_minishell.exit_s = 1;
 			printf("minishell: exit: too many arguments\n");
 			g_minishell.exit_s = 1;
 			exit(g_minishell.exit_s);
-=======
-			error_msg("exit", "too many arguments", 1);
-			ft_clear_minishell();
-			exit(1);
->>>>>>> upstream/main
 		}
 		exit_value = check_exit_arg(args[1]);
 		g_minishell.exit_s = exit_value;
 		exit(exit_value);
 	}
-<<<<<<< HEAD
-	exit(0);
-=======
 	ft_clear_minishell();
 	exit(exit_value);
->>>>>>> upstream/main
 }

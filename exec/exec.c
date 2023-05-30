@@ -6,30 +6,16 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 17:07:56 by oakerkao          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/05/29 16:04:58 by oakerkao         ###   ########.fr       */
-=======
-/*   Updated: 2023/05/23 17:52:20 by abelayad         ###   ########.fr       */
->>>>>>> upstream/main
+/*   Updated: 2023/05/30 16:28:34 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-<<<<<<< HEAD
-void	exec()
-{
-=======
-// T_CMD
-// T_AND
-// T_OR
-// T_PIPE
-
 void	exec(void)
 {
 	t_node		*tree;
 	t_node		*tmp;
->>>>>>> upstream/main
 	t_context	ctx;
 	int	child;
 	int	i;
@@ -53,6 +39,8 @@ void	exec(void)
 	}
 	if (WIFEXITED(status))
 		g_minishell.exit_s = WEXITSTATUS(status);
+	else if (WIFSIGNALED(status))
+		g_minishell.exit_s = 128 + WTERMSIG(status);
 	close_parent_here_doc(&ctx);
 	ft_clear_ast(&g_minishell.ast);
 }
@@ -65,11 +53,6 @@ int	exec_node(t_node *tree, t_context *ctx)
 		return (exec_pipe(tree, ctx));
 	else if (tree->type == N_CMD)
 		return (exec_child(tree, ctx));
-<<<<<<< HEAD
-=======
-	else if (tree->type == N_OR)
-		return (exec_or(tree, ctx));
->>>>>>> upstream/main
 	else if (tree->type == N_AND)
 		return (exec_and(tree, ctx));
 	else if (tree->type == N_OR)

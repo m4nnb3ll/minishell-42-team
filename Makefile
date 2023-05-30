@@ -32,9 +32,6 @@ ENV			:=	env/add_node.c \
 EXEC		:=	exec/exec.c \
 			exec/path_getter.c \
 			exec/cmd_getter.c \
-			exec/exec_redirect.c \
-			exec/exec_pipe.c \
-			exec/exec_child_utils.c \
 			exec/exec_child.c\
 			exec/exec_pipe.c \
 			exec/exist_check.c\
@@ -56,7 +53,7 @@ BUILTINS	:=	builtins/echo.c \
 				builtins/utils.c
 
 EXPANDER	:=	expander/expander.c \
-				expander/expander_utils.c
+				#expander/expander_utils.c
 
 CLEARING	:=	clearing/minishell_clr.c \
 				# clearing/minishell_clr.c
@@ -73,7 +70,7 @@ SRCS		:=	$(TOKENIZING)\
 
 OBJS		:= $(SRCS:.c=.o)
 
-READLINE_PATH:=	/goinfre/abelayad/homebrew/opt/readline
+READLINE_PATH:=	/goinfre/oakerkao/homebrew/opt/readline
 
 %.o: %.c
 	@$(CC) -g $(CFLAGS) -c $< -o $@ -Iinclude -I$(READLINE_PATH)/include

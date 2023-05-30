@@ -6,11 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 11:32:29 by oakerkao          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/05/29 15:55:49 by oakerkao         ###   ########.fr       */
-=======
-/*   Updated: 2023/05/23 18:06:49 by abelayad         ###   ########.fr       */
->>>>>>> upstream/main
+/*   Updated: 2023/05/30 15:53:54 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +54,7 @@ void	in(char *file, t_context *ctx)
 
 void	append(char *file, t_context *ctx)
 {
-<<<<<<< HEAD
 	int	fd;
-=======
-	int		fd;
-	char	**expanded;
->>>>>>> upstream/main
 
 	if (!file)
 	{

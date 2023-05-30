@@ -6,13 +6,11 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 18:04:54 by oakerkao          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/05/28 19:03:57 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/05/30 16:04:36 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "expander.h"
-# include <string.h>
+# include "minishell.h"
 
 int	put_twod_size(t_list *lst)
 {
@@ -146,23 +144,13 @@ void	join_value(t_expand *expand, char *value)
 		expand->tmp = expand->tmp->next;
 	}
 }
-=======
-/*   Updated: 2023/05/23 20:01:30 by abelayad         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "minishell.h"
->>>>>>> upstream/main
 
 int	check_value(t_expand *expand, char *str)
 {
 	char	*temp;
-<<<<<<< HEAD
 	char	*tmp;
 	t_env	*node;
 	int	len;
-=======
->>>>>>> upstream/main
 
 	temp = get_var(str + 1);
 	if (temp[0] == '\0' && str[0] == '$')
@@ -182,7 +170,6 @@ int	check_value(t_expand *expand, char *str)
 		if (!expand->tmp->content)
 			expand->tmp->content = ft_strdup(ft_itoa(g_minishell.exit_s));
 		else
-<<<<<<< HEAD
 			expand->tmp->content = ft_strjoin(expand->tmp->content, ft_itoa(g_minishell.exit_s));
 		return (1);
 	}
@@ -194,14 +181,6 @@ int	check_value(t_expand *expand, char *str)
 	len = ft_strlen(temp);
 	free(temp);
 	return (len);
-=======
-			expand->tmp->content = ft_strjoin(expand->tmp->content,
-					ft_itoa(g_minishell.exit_s));
-	}
-	if (get_node(temp))
-		join_value(expand, ft_split(get_node(temp)->value, ' '));
-	return (ft_strlen(temp));
->>>>>>> upstream/main
 }
 
 char	**expander(char *str)
@@ -215,14 +194,9 @@ char	**expander(char *str)
 	expand.tmp = expand.lst;
 	while (str && str[++(expand.i)])
 	{
-<<<<<<< HEAD
 		if ((str[expand.i] == '"' || str[expand.i] == '\'') && expand.quotes == 0)	
 		{
 			expand.tmp->content = char_join(expand.tmp->content, '\0');
-=======
-		if ((str[expand.i] == '"' || str[expand.i] == '\'')
-			&& expand.quotes == 0)
->>>>>>> upstream/main
 			expand.quotes = str[expand.i];
 		}
 		else if (str[expand.i] == expand.quotes)
@@ -237,9 +211,5 @@ char	**expander(char *str)
 			expand.tmp = expand.tmp->next;
 		}
 	}
-<<<<<<< HEAD
 	return (put_twod_array(&expand.lst));
-=======
-	return (ft_lstclear(&expand.tmp, NULL), put_twod_array(expand.lst));
->>>>>>> upstream/main
 }

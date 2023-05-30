@@ -6,11 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 01:28:41 by abelayad          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/05/29 20:14:19 by oakerkao         ###   ########.fr       */
-=======
-/*   Updated: 2023/05/29 11:46:16 by abelayad         ###   ########.fr       */
->>>>>>> upstream/main
+/*   Updated: 2023/05/30 16:41:18 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +18,7 @@ void	ft_sigint_handler(int num)
 {
 	(void)num;
 	printf("\n");
-	rl_replace_line("", 0);
+	//rl_replace_line("", 0);
 	rl_on_new_line();
 	rl_redisplay();
 }
@@ -36,8 +32,8 @@ void	ft_sigquit_handler(int num)
 
 void	ft_init_signals(void)
 {
-	signal(SIGINT, ft_sigint_handler);
-	signal(SIGQUIT, SIG_IGN);
+	/*signal(SIGINT, ft_sigint_handler);
+	signal(SIGQUIT, SIG_IGN);*/
 }
 
 int	main(int argc, char *argv[], char *env[])
@@ -52,19 +48,13 @@ int	main(int argc, char *argv[], char *env[])
 	while (1)
 	{
 		ft_init_signals();
-		g_minishell.line = readline(PROMPT);
+		g_minishell.line = readline("lol> ");
 		if (!g_minishell.line)
 		{
-<<<<<<< HEAD
 			//ft_putstr_fd("exit\n", 1);
 			//env_clear(&g_minishell.list);
 			//ft_clear_ast(&g_minishell.ast);
 			exit(g_minishell.exit_s);
-=======
-			ft_putstr_fd("\nexit\n", 1);
-			ft_clear_minishell();
-			exit(0);
->>>>>>> upstream/main
 		}
 		g_minishell.tokens = ft_tokenize();
 		if (!g_minishell.tokens)
@@ -74,12 +64,7 @@ int	main(int argc, char *argv[], char *env[])
 			ft_handle_parse_err();
 		signal(SIGQUIT, ft_sigquit_handler);
 		exec();
-<<<<<<< HEAD
 		//ft_clear_ast(&g_minishell.ast);
 	}
 	//env_clear(&g_minishell.list);
-=======
-		ft_clear_minishell();
-	}
->>>>>>> upstream/main
 }
