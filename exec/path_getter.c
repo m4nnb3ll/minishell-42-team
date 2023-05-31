@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:13:45 by oakerkao          #+#    #+#             */
-/*   Updated: 2023/05/30 15:53:20 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:56:51 by abelayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,13 @@ char	*path_getter(char *cmd)
 	t_env	*tmp;
 	int		exist;
 
-	if (!cmd)
+	if (*cmd == '\0')
+	{
+		g_minishell.error_code = CMD_NOT_FOUND;
+		g_minishell.error_file = cmd;
+		error_msg();
 		return (NULL);
+	}
 	tmp = get_node("PATH");
 	path = check_path(cmd, tmp->value);
 	return (path);
