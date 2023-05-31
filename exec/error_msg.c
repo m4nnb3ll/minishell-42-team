@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:22:19 by oakerkao          #+#    #+#             */
-/*   Updated: 2023/05/31 16:11:06 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:55:16 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 // 31 ->permission denied for file->1
 // 32 ->permission denied for program->126
 // 4 ->ambiguous redirection->1
+// 5 ->cd :no such file or directory->1
+// 5 ->cd :home not set->1
 // 5 ->not a valid identifier->1
 // 5 ->quit program ctrl+\->131
 
@@ -54,6 +56,15 @@ void	error_script()
 		ft_putstr_fd(g_minishell.error_file, 2);
 		ft_putstr_fd(": ambiguous redirect\n", 2);
 	}
+	else if (g_minishell.error_code == CD_NO_SUCH_FILE)
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd("cd: ", 2);
+		ft_putstr_fd(g_minishell.error_file, 2);
+		ft_putstr_fd(": No such file or directory\n", 2);
+	}
+	else if (g_minishell.error_code == HOME_NOT_SET)
+		ft_putstr_fd("minishell: cd: HOME not set\n", 2);
 }
 
 void	error_msg()

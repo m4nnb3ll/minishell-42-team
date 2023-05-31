@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 01:32:13 by abelayad          #+#    #+#             */
-/*   Updated: 2023/05/30 16:12:00 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:50:01 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@ typedef enum s_error
 	NO_SUCH_FILE_PROGRAM,
 	PERMISSION_DENIED_FILE,
 	PERMISSION_DENIED_PROGRAM,
-	AMBIGUOUS
+	AMBIGUOUS,
+	CD_NO_SUCH_FILE,
+	HOME_NOT_SET,
 } t_error;
 
 // EXEC END

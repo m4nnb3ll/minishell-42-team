@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 12:19:12 by oakerkao          #+#    #+#             */
-/*   Updated: 2023/05/30 15:59:49 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:57:00 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	change_to_home(void)
 	}
 	else
 	{
-		printf("minishell: cd: HOME not set\n");
-		g_minishell.exit_s = 1;
+		g_minishell.error_code = HOME_NOT_SET;
+		error_msg();
 	}
 }
 
@@ -64,8 +64,9 @@ void	cd(char *path)
 	}
 	if (chdir(path) == -1)
 	{
-		printf("minishell: %s: No such file or directory\n", path);
-		g_minishell.exit_s = 1;
+		g_minishell.error_code = CD_NO_SUCH_FILE;
+		g_minishell.error_file = path;
+		error_msg();
 		return ;
 	}
 	change_old_pwd();
