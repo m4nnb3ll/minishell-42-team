@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_err.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oakerkao <oakerkao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 21:50:17 by abelayad          #+#    #+#             */
-/*   Updated: 2023/05/30 15:50:52 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:42:10 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_handle_parse_err(void)
 			else
 				token_type = g_minishell.curr_token->type;
 			ft_putstr_fd("minishell: syntax error near unexpected token `", 2);
-			//ft_putstr_fd(types[token_type], 2);
+			ft_putstr_fd(types[token_type], 2);
 			ft_putstr_fd("'\n", 2);
 			g_minishell.exit_s = 258;
 		}

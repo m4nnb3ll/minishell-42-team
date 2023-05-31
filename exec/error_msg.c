@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:22:19 by oakerkao          #+#    #+#             */
-/*   Updated: 2023/05/30 15:57:34 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:11:06 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,31 @@
 void	error_script()
 {
 	if (g_minishell.error_code == CMD_NOT_FOUND)
-		printf("minishell: %s: command not found\n", g_minishell.error_file);
-	else if (g_minishell.error_code == NO_SUCH_FILE_FILE || g_minishell.error_code == NO_SUCH_FILE_PROGRAM)
-		printf("minishell: %s: No such file or directory\n", g_minishell.error_file);
-	else if (g_minishell.error_code == PERMISSION_DENIED_FILE || g_minishell.error_code == PERMISSION_DENIED_PROGRAM)
-		printf("minishell: %s: permission denied\n", g_minishell.error_file);
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(g_minishell.error_file, 2);
+		ft_putstr_fd(": command not found\n", 2);
+	}
+	else if (g_minishell.error_code == NO_SUCH_FILE_FILE \
+			|| g_minishell.error_code == NO_SUCH_FILE_PROGRAM)
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(g_minishell.error_file, 2);
+		ft_putstr_fd(": No such file or directory\n", 2);
+	}
+	else if (g_minishell.error_code == PERMISSION_DENIED_FILE \
+			|| g_minishell.error_code == PERMISSION_DENIED_PROGRAM)
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(g_minishell.error_file, 2);
+		ft_putstr_fd(": Permission denied\n", 2);
+	}
 	else if (g_minishell.error_code == AMBIGUOUS)
-		printf("minishell: %s: ambiguous redirect\n", g_minishell.error_file);
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(g_minishell.error_file, 2);
+		ft_putstr_fd(": ambiguous redirect\n", 2);
+	}
 }
 
 void	error_msg()

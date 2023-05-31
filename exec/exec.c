@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 17:07:56 by oakerkao          #+#    #+#             */
-/*   Updated: 2023/05/30 16:28:34 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:37:46 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	exec(void)
 	ctx.fd_close = NULL;
 	ctx.here_doc = NULL;
 	i = 0;
+	status = 0;
 	traverse_tree(g_minishell.ast, &ctx);
 	child = exec_node(g_minishell.ast, &ctx);
 	while (i < child)

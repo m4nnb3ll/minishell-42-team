@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 01:28:41 by abelayad          #+#    #+#             */
-/*   Updated: 2023/05/30 16:41:18 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:13:54 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int argc, char *argv[], char *env[])
 	while (1)
 	{
 		ft_init_signals();
-		g_minishell.line = readline("lol> ");
+		g_minishell.line = readline(PROMPT);
 		if (!g_minishell.line)
 		{
 			//ft_putstr_fd("exit\n", 1);
