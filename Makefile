@@ -70,7 +70,7 @@ SRCS		:=	$(TOKENIZING)\
 
 OBJS		:= $(SRCS:.c=.o)
 
-#READLINE_PATH:=	/goinfre/oakerkao/homebrew/opt/readline
+READLINE_PATH:=        /goinfre/homebrew/opt/readline
 
 %.o: %.c
 	@$(CC) -g $(CFLAGS) -c $< -o $@ -Iinclude #-I$(READLINE_PATH)/include
@@ -82,7 +82,7 @@ $(LIBFT):
 	@echo "libft done."
 
 $(NAME): $(LIBFT) $(OBJS)
-	$(CC) -o $(NAME) $(OBJS) -L$(LIBFT_PATH) -lft -lreadline #-L$(READLINE_PATH)/lib 
+	$(CC) -o $(NAME) $(OBJS) -L$(LIBFT_PATH) -lft -lreadline #-L$(READLINE_PATH) lib -lreadline
 
 clean:
 	@make clean -C $(LIBFT_PATH)

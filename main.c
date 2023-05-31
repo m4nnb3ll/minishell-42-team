@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 01:28:41 by abelayad          #+#    #+#             */
-/*   Updated: 2023/05/31 16:13:54 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:57:48 by abelayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ int	main(int argc, char *argv[], char *env[])
 			continue ;
 		g_minishell.ast = ft_parse();
 		if (g_minishell.parse_err.type)
+		{
 			ft_handle_parse_err();
+			continue ;
+		}
 		signal(SIGQUIT, ft_sigquit_handler);
 		exec();
 		//ft_clear_ast(&g_minishell.ast);
