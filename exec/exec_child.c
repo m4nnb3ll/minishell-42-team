@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:13:52 by oakerkao          #+#    #+#             */
-/*   Updated: 2023/05/31 16:59:09 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:00:17 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ void check_redirection(t_io_node *io, t_context *ctx)
 		g_minishell.in_redirect = 1;
 		g_minishell.error_file = io->value;
 		expanded = expander(io->value);
+		if (!expanded[0] || expanded[1])
+		{
+			g_minishell.error_code = AMBIGUOUS;	
+			error_msg();
+			return ;
+		}
 		if (io->type == IO_OUT)
 			out(expanded[0], ctx);
 		else if (io->type == IO_IN)
@@ -72,33 +78,36 @@ int	exec_child(t_node *tree, t_context *ctx)
 			exec_builtin_parent();
 			return (0);
 		}
-		else if (g_minishell.exec.args && is_builtin_child() == 0)
+		else if (g_minishell.exec.args && g_minishell.exec.args[0] && is_builtin_child() == 0)
+		{
 			g_minishell.exec.path = path_getter(g_minishell.exec.args[0]);
+		}
 	}
-	pid = fork();
-	if (pid == 0)
+	g_minishell.last_pid = fork();
+	if (g_minishell.last_pid == 0)
 	{
 		exec_dup(ctx);
 		if (g_minishell.error_code != 0)
-		{
 			free_ever();
-			exit(g_minishell.exit_s);
-		}
 		else if (is_builtin_child())
 		{
 			exec_builtin_child();
 			free_ever();
-		}
+		}	
 		else if (g_minishell.exec.path)
-		{
+		{	
 			if (execve(g_minishell.exec.path, g_minishell.exec.args, NULL) == -1)
+			{
+				if (g_minishell.exit_s == 0)
+					g_minishell.exit_s = 1;
 				free_ever();
+			}
 		}
 		free_ever();
 	}
-	if (g_minishell.exec.args)
+	/*if (g_minishell.exec.args)
 		free_twod_array(g_minishell.exec.args);
 	if (g_minishell.exec.path)
-		free(g_minishell.exec.path);
+		free(g_minishell.exec.path);*/
 	return (1);
 }

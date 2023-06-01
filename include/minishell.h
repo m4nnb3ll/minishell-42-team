@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 01:32:13 by abelayad          #+#    #+#             */
-/*   Updated: 2023/05/31 16:50:01 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/06/01 16:53:12 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ typedef enum s_error
 	AMBIGUOUS,
 	CD_NO_SUCH_FILE,
 	HOME_NOT_SET,
+	TOO_MANY_ARGS,
+	NUMERIC_REQUI
 } t_error;
 
 // EXEC END
@@ -97,6 +99,7 @@ typedef struct s_minishell
 	int			in_redirect;
 	t_error	error_code;
 	char	*error_file;
+	int	last_pid;
 	t_parse_err	parse_err;
 }					t_minishell;
 

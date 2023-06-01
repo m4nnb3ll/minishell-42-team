@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 17:07:56 by oakerkao          #+#    #+#             */
-/*   Updated: 2023/05/31 17:12:34 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:16:35 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,16 @@ void	exec(void)
 	ctx.fd[1] = 1;
 	ctx.fd_close = NULL;
 	ctx.here_doc = NULL;
-	status = 0;
+	status = -1;
 	i = 0;
 	traverse_tree(g_minishell.ast, &ctx);
 	child = exec_node(g_minishell.ast, &ctx);
-	while (i < child)
+	while (i < child - 1)
 	{
-		wait(&status);	
+		wait(&status);
 		i++;
 	}
+	waitpid(g_minishell.last_pid, &status, 0);	
 	if (WIFEXITED(status))
 		g_minishell.exit_s = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))

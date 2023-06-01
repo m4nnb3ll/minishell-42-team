@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oakerkao <oakerkao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 20:41:48 by abelayad          #+#    #+#             */
-/*   Updated: 2023/05/26 16:36:10 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:06:54 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool	ft_skip_quotes(char *line, size_t *i)
 
 void	ft_print_quote_err(char c)
 {
-	ft_putstr_fd("minishell: unexpected `newline' while looking for matching `", 2);
+	ft_putstr_fd("minishell: unexpected EOF while looking for matching `", 2);
 	ft_putchar_fd(c, 2);
 	ft_putstr_fd("'\n", 2);
 	g_minishell.exit_s = 258;

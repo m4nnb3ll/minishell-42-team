@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:13:45 by oakerkao          #+#    #+#             */
-/*   Updated: 2023/05/31 16:56:51 by abelayad         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:20:29 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ char	*check_path(char *cmd, char *env)
 {
 	char	*result;
 
+	result = NULL;
 	g_minishell.error_file = cmd;
-	if (ft_strncmp(cmd, "./", 2) == 0)
+	if (ft_strncmp(cmd, "./", 2) == 0 || ft_strnstr(cmd, "/", ft_strlen(cmd)))
 	{
 		check_program(cmd);
 		if (g_minishell.error_code == SUCCESS)
@@ -62,7 +63,8 @@ char	*check_path(char *cmd, char *env)
 		error_msg();
 		return (0);
 	}
-	result = check_cmd(cmd, env);
+	if (env)
+		result = check_cmd(cmd, env);
 	return (result);
 }
 
@@ -81,6 +83,16 @@ char	*path_getter(char *cmd)
 		return (NULL);
 	}
 	tmp = get_node("PATH");
-	path = check_path(cmd, tmp->value);
+	if (tmp)
+		path = check_path(cmd, tmp->value);
+	else
+	{
+		path = check_path(cmd, NULL);
+		if (!path)
+		{
+			g_minishell.error_code = NO_SUCH_FILE_PROGRAM;
+			error_msg();
+		}
+	}
 	return (path);
 }

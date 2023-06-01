@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 01:28:41 by abelayad          #+#    #+#             */
-/*   Updated: 2023/05/31 16:57:48 by abelayad         ###   ########.fr       */
+/*   Updated: 2023/06/01 11:58:12 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ void	ft_sigquit_handler(int num)
 
 void	ft_init_signals(void)
 {
-	/*signal(SIGINT, ft_sigint_handler);
-	signal(SIGQUIT, SIG_IGN);*/
+	//signal(SIGINT, ft_sigint_handler);
+	//signal(SIGQUIT, SIG_IGN);
+	//signal(SIGPIPE, SIG_IGN);
 }
 
 int	main(int argc, char *argv[], char *env[])

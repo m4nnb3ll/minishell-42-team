@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:22:19 by oakerkao          #+#    #+#             */
-/*   Updated: 2023/05/31 16:55:16 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/06/01 16:52:02 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,14 @@ void	error_script()
 	}
 	else if (g_minishell.error_code == HOME_NOT_SET)
 		ft_putstr_fd("minishell: cd: HOME not set\n", 2);
+	else if (g_minishell.error_code == TOO_MANY_ARGS)
+		ft_putstr_fd("minishell: exit: too many arguments\n", 2);
+	else if (g_minishell.error_code == NUMERIC_REQUI)
+	{
+		ft_putstr_fd("minishell: exit: ", 2);
+		ft_putstr_fd(g_minishell.error_file, 2);
+		ft_putstr_fd(": numeric argument required\n", 2);
+	}
 }
 
 void	error_msg()

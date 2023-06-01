@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 11:32:29 by oakerkao          #+#    #+#             */
-/*   Updated: 2023/05/30 15:53:54 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:00:53 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@ void	out(char *file, t_context *ctx)
 {
 	int		fd;
 
-	if (!file)
-	{
-		g_minishell.error_code = AMBIGUOUS;
-		return ;
-	}
-	else
-	{
 		fd = open(file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 		if (fd == -1)
 		{
@@ -31,18 +24,12 @@ void	out(char *file, t_context *ctx)
 		}
 		ctx->fd[1] = fd;
 		return ;
-	}
 }
 
 void	in(char *file, t_context *ctx)
 {
 	int		fd;
 
-	if (!file)
-	{
-		g_minishell.error_code = AMBIGUOUS;
-		return ;
-	}
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
@@ -56,11 +43,6 @@ void	append(char *file, t_context *ctx)
 {
 	int	fd;
 
-	if (!file)
-	{
-		g_minishell.error_code = AMBIGUOUS;
-		return ;
-	}
 	fd = open(file, O_CREAT | O_WRONLY | O_APPEND, 0644);
 	if (fd == -1)
 	{
