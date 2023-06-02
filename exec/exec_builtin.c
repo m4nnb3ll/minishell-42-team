@@ -6,7 +6,7 @@
 /*   By: oakerkao <oakerkao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 12:46:05 by oakerkao          #+#    #+#             */
-/*   Updated: 2023/05/26 18:34:05 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/06/02 11:52:51 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	exec_builtin_parent()
 {
-	g_minishell.exit_s = 0;
 	if (ft_strcmp(g_minishell.exec.args[0], "cd") == 0)
 		cd(g_minishell.exec.args[1]);
 	else if (ft_strcmp(g_minishell.exec.args[0], "exit") == 0)
@@ -42,7 +41,6 @@ int	is_builtin_parent()
 
 void	exec_builtin_child()
 {
-	g_minishell.exit_s = 0;
 	if (ft_strcmp(g_minishell.exec.args[0], "echo") == 0)
 		echo(g_minishell.exec.args);
 	if (ft_strcmp(g_minishell.exec.args[0], "cd") == 0)

@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:13:52 by oakerkao          #+#    #+#             */
-/*   Updated: 2023/06/01 18:00:17 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/06/02 12:36:03 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void check_redirection(t_io_node *io, t_context *ctx)
 		g_minishell.in_redirect = 1;
 		g_minishell.error_file = io->value;
 		expanded = expander(io->value);
-		if (!expanded[0] || expanded[1])
+		if ((expanded[0] == NULL  && expanded[1] == NULL) || (expanded[1] != NULL))
 		{
 			g_minishell.error_code = AMBIGUOUS;	
 			error_msg();

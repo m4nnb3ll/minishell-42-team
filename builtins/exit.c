@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:41:56 by oakerkao          #+#    #+#             */
-/*   Updated: 2023/06/01 17:03:32 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/06/02 11:53:08 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_exit(char **args)
 {
 	int	exit_value;
 
-	exit_value = 0;
+	exit_value = g_minishell.exit_s;
 	if (args[1])
 	{
 		if (check_exit_arg(args[1]) && !args[2])

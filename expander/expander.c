@@ -6,7 +6,7 @@
 /*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 18:04:54 by oakerkao          #+#    #+#             */
-/*   Updated: 2023/06/01 20:28:05 by oakerkao         ###   ########.fr       */
+/*   Updated: 2023/06/02 12:27:53 by oakerkao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	put_twod_size(t_list *lst)
 	len = 0;
 	while (lst)
 	{
-		len++;
+		if (lst->content != NULL)
+			len++;
 		lst = lst->next;
 	}
 	return (len);
@@ -46,6 +47,7 @@ char	**put_twod_array(t_list **lst)
 		tmp = tmp->next;
 	}
 	arr[i] = NULL;
+	//parsing problem with '' '' 'hello'
 	/*while (*arr)
 	{
 		printf("%s\n", *arr);	
